@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projects · Arthur Obo-Nwakaji</title>
+  <meta name="description" content="Open source and side projects by Arthur Obo-Nwakaji: AgentFlow, Saidic, Pennywise, Saidiz and the smaller repos.">
+  <link rel="canonical" href="https://arthurobo.github.io/projects/">
+  <meta property="og:title" content="Projects · Arthur Obo-Nwakaji">
+  <meta property="og:description" content="Open source and side projects by Arthur Obo-Nwakaji: AgentFlow, Saidic, Pennywise, Saidiz and the smaller repos.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://arthurobo.github.io/projects/">
+  <meta property="og:site_name" content="Arthur Obo-Nwakaji">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <script>try{var p=localStorage.getItem("palette");if(p)document.documentElement.classList.add("p-"+p)}catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400..700&family=JetBrains+Mono:wght@400..800&display=swap">
+  <link rel="stylesheet" href="/assets/palettes.css">
+  <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body class="s-projects">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap wrap--wide">
+      <a class="mark" href="/" aria-label="Arthur Obo-Nwakaji, home"><span class="mark-glyph" aria-hidden="true">a</span></a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a data-hue="amber" href="/work/">Work</a></li>
+        <li><a data-hue="coral" href="/projects/" aria-current="page">Projects</a></li>
+        <li><a data-hue="mint" href="/resume/">Resume</a></li>
+        <li><a data-hue="violet" href="/hire/">Hire</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <div class="wrap wrap--wide">
+      <h1>Projects</h1>
+      <p class="lede" style="max-width: 44rem;">Things I built on my own time. Most of them are in Go, and each one ships as something you can install and run, with the service file, the installer and the release pipeline that implies.</p>
+
+      <ul class="cards">
+        <li><a class="card" href="/projects/agentflow/">
+          <span class="card-art" data-hue="amber" aria-hidden="true">
+            <svg viewBox="0 0 120 120" focusable="false">
+              <rect class="art-stroke" x="36" y="12" width="48" height="96" rx="9"/>
+              <path class="art-stroke art-thin art-soft" d="M52 20 H68"/>
+              <path class="art-stroke art-thin" d="M46 42 l6 5 -6 5"/>
+              <rect class="art-fill art-blink" x="56" y="42" width="7" height="10" rx="1"/>
+              <path class="art-stroke art-thin art-soft" d="M46 64 H74 M46 74 H66 M46 84 H70"/>
+              <path class="art-stroke art-thin art-slide" d="M8 60 H30"/>
+              <path class="art-stroke art-thin art-slide" d="M90 60 H112"/>
+            </svg>
+          </span>
+          <span class="card-body">
+            <span class="card-top"><span class="card-title">AgentFlow</span><span class="card-when"><span class="live">live</span> 2026</span></span>
+            <span class="card-text">A background daemon that runs Claude Code and OpenCode in real PTYs on your computer and lets you drive them from your phone's browser. Cloudflare tunnel by default, your own Tailscale if you prefer, per-device pairing instead of passwords.</span>
+            <span class="card-stack">Go · Next.js · SQLite · systemd / launchd / Task Scheduler · GitHub Actions · cosign</span>
+          </span>
+        </a></li>
+        <li><a class="card" href="/projects/saidic/">
+          <span class="card-art" data-hue="coral" aria-hidden="true">
+            <svg viewBox="0 0 120 120" focusable="false">
+              <path class="art-stroke" d="M22 30 h70 a8 8 0 0 1 8 8 v40 a8 8 0 0 1 -8 8 H56 l-18 16 v-16 H22 a8 8 0 0 1 -8 -8 V38 a8 8 0 0 1 8 -8z"/>
+              <circle class="art-fill art-bob" cx="42" cy="58" r="5"/>
+              <circle class="art-fill art-bob" cx="57" cy="58" r="5"/>
+              <circle class="art-fill art-bob" cx="72" cy="58" r="5"/>
+              <path class="art-fill art-pop" d="M100 6 l-10 18 h8 l-4 16 12 -20 h-8z"/>
+            </svg>
+          </span>
+          <span class="card-body">
+            <span class="card-top"><span class="card-title">Saidic</span><span class="card-when"><span class="wip">in development</span> 2026</span></span>
+            <span class="card-text">An AI-first customer engagement platform. A chat widget that answers from the business's own knowledge and carries out actions against its systems, a dashboard for the team, and a backend that replaced seven services with one.</span>
+            <span class="card-stack">FastAPI · SQLAlchemy · PostgreSQL + pgvector · Redis · Nginx · Next.js · WebSockets</span>
+          </span>
+        </a></li>
+        <li><a class="card" href="/projects/pennywise/">
+          <span class="card-art" data-hue="mint" aria-hidden="true">
+            <svg viewBox="0 0 120 120" focusable="false">
+              <path class="art-stroke art-thin art-soft" d="M18 98 H102"/>
+              <rect class="art-fill art-bar" x="24" y="56" width="12" height="42" rx="3"/>
+              <rect class="art-fill art-bar" x="44" y="40" width="12" height="58" rx="3"/>
+              <rect class="art-fill art-bar" x="64" y="66" width="12" height="32" rx="3"/>
+              <rect class="art-fill art-bar" x="84" y="48" width="12" height="50" rx="3"/>
+              <circle class="art-stroke art-pop" cx="92" cy="24" r="12"/>
+              <path class="art-stroke art-thin" d="M92 16 v16 M88 20.5 h6 a2.5 2.5 0 0 1 0 5 h-4 a2.5 2.5 0 0 0 0 5 h6"/>
+            </svg>
+          </span>
+          <span class="card-body">
+            <span class="card-top"><span class="card-title">Pennywise</span><span class="card-when"><span class="live">live</span> 2026</span></span>
+            <span class="card-text">Local-first expense tracking. One Go binary, one SQLite file you can copy, installs itself as an OS service. Optional Telegram bot that logs "5000 fuel" or a photo of a receipt with your own LLM key.</span>
+            <span class="card-stack">Go · SQLite · Telegram · OpenAI / Anthropic / Gemini / xAI</span>
+          </span>
+        </a></li>
+        <li id="saidiz"><span class="card">
+          <span class="card-art" data-hue="violet" aria-hidden="true">
+            <svg viewBox="0 0 120 120" focusable="false">
+              <rect class="art-stroke" x="14" y="20" width="92" height="70" rx="8"/>
+              <path class="art-stroke art-thin art-soft" d="M14 34 H106"/>
+              <rect class="art-stroke art-thin art-soft" x="26" y="46" width="30" height="10" rx="2"/>
+              <rect class="art-stroke art-thin art-soft" x="26" y="64" width="44" height="10" rx="2"/>
+              <path class="art-fill art-bob" d="M72 52 l22 10 -9 3 -3 9z"/>
+              <path class="art-stroke art-thin art-soft" d="M40 100 H80"/>
+            </svg>
+          </span>
+          <span class="card-body">
+            <span class="card-top"><span class="card-title">Saidiz</span><span class="card-when"><span class="wip">early</span> 2026</span></span>
+            <span class="card-text">A personal assistant that uses your own Mac for you, through the same Accessibility interface screen readers use. Anything someone else would see is ask-first, with the full text shown before it goes anywhere. Private while it is early.</span>
+            <span class="card-stack">Go · macOS Accessibility</span>
+          </span>
+        </span></li>
+      </ul>
+
+      <h2 class="section-title">smaller repos</h2>
+      <p class="muted" style="max-width: 44rem; margin-top: -0.25rem;">Utilities and starters on <a href="https://github.com/Arthurobo" target="_blank" rel="noopener">GitHub</a>, each one the smallest thing that did the job.</p>
+      <ul class="worklist worklist--index" style="max-width: 44rem;">
+        <li><a href="https://github.com/Arthurobo/agentflow-cloud" target="_blank" rel="noopener"><span class="worklist-top"><span class="worklist-title">agentflow-cloud</span><span class="worklist-dots" aria-hidden="true"></span><span class="worklist-when">Go · 2026</span></span><span class="worklist-line">The account service behind AgentFlow: email sign-in, Cloudflare tunnel provisioning, a dashboard in Go templates and htmx. It never sees a device token.</span></a></li>
+        <li><a href="https://github.com/Arthurobo/reddit-scraper" target="_blank" rel="noopener"><span class="worklist-top"><span class="worklist-title">reddit-scraper</span><span class="worklist-dots" aria-hidden="true"></span><span class="worklist-when">Python · 2026</span></span><span class="worklist-line">A Reddit scraper with a separate backend repo.</span></a></li>
+        <li><a href="https://github.com/Arthurobo/golang-simple-starter" target="_blank" rel="noopener"><span class="worklist-top"><span class="worklist-title">golang-simple-starter</span><span class="worklist-dots" aria-hidden="true"></span><span class="worklist-when">Go · 2025</span></span><span class="worklist-line">The Go service skeleton I start new things from.</span></a></li>
+        <li><a href="https://github.com/Arthurobo/django-docker" target="_blank" rel="noopener"><span class="worklist-top"><span class="worklist-title">django-docker</span><span class="worklist-dots" aria-hidden="true"></span><span class="worklist-when">Python · 2025</span></span><span class="worklist-line">Django in Docker, the way I set it up for clients.</span></a></li>
+        <li><a href="https://github.com/Arthurobo/proxy-rotator" target="_blank" rel="noopener"><span class="worklist-top"><span class="worklist-title">proxy-rotator</span><span class="worklist-dots" aria-hidden="true"></span><span class="worklist-when">Python · 2024</span></span><span class="worklist-line">Rotating proxies for the scraping work.</span></a></li>
+        <li><a href="https://github.com/Arthurobo/inverted_index" target="_blank" rel="noopener"><span class="worklist-top"><span class="worklist-title">inverted_index</span><span class="worklist-dots" aria-hidden="true"></span><span class="worklist-when">Python · 2021</span></span><span class="worklist-line">A search index from first principles.</span></a></li>
+      </ul>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap wrap--wide">
+      <p>No framework, no build step. The only script is the palette picker. <a href="https://github.com/Arthurobo" target="_blank" rel="noopener">Read the source</a>.</p>
+      <details class="palette-picker">
+        <summary><span class="palette-chips" aria-hidden="true"><i data-hue="amber"></i><i data-hue="coral"></i><i data-hue="mint"></i><i data-hue="cyan"></i><i data-hue="violet"></i></span> Palette<span class="visually-hidden">: <span class="palette-current">Graphite</span></span></summary>
+        <div class="palette-menu">
+          <button class="palette-option" type="button" data-palette="graphite" aria-pressed="true"><span class="palette-chips" aria-hidden="true"><i data-hue="amber"></i><i data-hue="coral"></i><i data-hue="mint"></i><i data-hue="cyan"></i><i data-hue="violet"></i></span> Graphite</button>
+          <button class="palette-option" type="button" data-palette="midnight" aria-pressed="false"><span class="palette-chips" aria-hidden="true"><i data-hue="amber"></i><i data-hue="coral"></i><i data-hue="mint"></i><i data-hue="cyan"></i><i data-hue="violet"></i></span> Midnight</button>
+          <button class="palette-option" type="button" data-palette="terminal" aria-pressed="false"><span class="palette-chips" aria-hidden="true"><i data-hue="amber"></i><i data-hue="coral"></i><i data-hue="mint"></i><i data-hue="cyan"></i><i data-hue="violet"></i></span> Terminal</button>
+          <button class="palette-option" type="button" data-palette="ember" aria-pressed="false"><span class="palette-chips" aria-hidden="true"><i data-hue="amber"></i><i data-hue="coral"></i><i data-hue="mint"></i><i data-hue="cyan"></i><i data-hue="violet"></i></span> Ember</button>
+          <button class="palette-option" type="button" data-palette="daylight" aria-pressed="false"><span class="palette-chips" aria-hidden="true"><i data-hue="amber"></i><i data-hue="coral"></i><i data-hue="mint"></i><i data-hue="cyan"></i><i data-hue="violet"></i></span> Daylight</button>
+        </div>
+      </details>
+    </div>
+  </footer>
+  <script src="/assets/palette.js" defer></script>
+</body>
+</html>

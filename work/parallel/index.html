@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Parallel · Arthur Obo-Nwakaji</title>
+  <meta name="description" content="At Parallel, Arthur Obo-Nwakaji owned the AWS infrastructure end to end with Terraform and GitLab CI/CD, containerised 5+ services, shipped 6+ Lambda functions, and built the RAG and recommendation services running on the same platform.">
+  <link rel="canonical" href="https://arthurobo.github.io/work/parallel/">
+  <meta property="og:title" content="Parallel · Arthur Obo-Nwakaji">
+  <meta property="og:description" content="At Parallel, Arthur Obo-Nwakaji owned the AWS infrastructure end to end with Terraform and GitLab CI/CD, containerised 5+ services, shipped 6+ Lambda functions, and built the RAG and recommendation services running on the same platform.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://arthurobo.github.io/work/parallel/">
+  <meta property="og:site_name" content="Arthur Obo-Nwakaji">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <script>try{var p=localStorage.getItem("palette");if(p)document.documentElement.classList.add("p-"+p)}catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400..700&family=JetBrains+Mono:wght@400..800&display=swap">
+  <link rel="stylesheet" href="/assets/palettes.css">
+  <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body class="s-work">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap wrap--wide">
+      <a class="mark" href="/" aria-label="Arthur Obo-Nwakaji, home"><span class="mark-glyph" aria-hidden="true">a</span></a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a data-hue="amber" href="/work/" aria-current="page">Work</a></li>
+        <li><a data-hue="coral" href="/projects/">Projects</a></li>
+        <li><a data-hue="mint" href="/resume/">Resume</a></li>
+        <li><a data-hue="violet" href="/hire/">Hire</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <div class="wrap wrap--wide">
+      <a class="back" href="/work/">← All work</a>
+      <article class="page-grid">
+        <h1>Parallel</h1>
+        <p class="lede">Owned the AWS infrastructure end to end, built the CI/CD from nothing, and shipped the Python, TypeScript and Go services that run on it, RAG included.</p>
+        <aside class="rail">
+          <dl class="facts">
+            <dt>role</dt><dd>Full Stack Engineer, DevOps &amp; Infrastructure</dd>
+            <dt>when</dt><dd>May 2023 – present · remote</dd>
+            <dt>platform</dt><dd>AWS (ECS, EC2, S3, ALB, Lambda, IAM), Terraform, Docker, GitLab CI/CD, Bash, Nginx</dd>
+            <dt>services</dt><dd>Python (FastAPI, Flask), Node.js / TypeScript, Go, Next.js, PostgreSQL, Redis</dd>
+            <dt>ai</dt><dd>LangChain, OpenAI and Anthropic APIs, pgvector, Pinecone</dd>
+            <dt>links</dt><dd><a href="https://useparallel.com" target="_blank" rel="noopener">useparallel.com</a></dd>
+          </dl>
+          <p class="rail-title">Also</p>
+          <ul>
+            <li><a href="/projects/agentflow/">AgentFlow</a></li>
+            <li><a href="/projects/saidic/">Saidic</a></li>
+            <li><a href="/resume/">The resume</a></li>
+          </ul>
+        </aside>
+
+        <ul class="stats">
+          <li style="--i: 0"><strong>0 → 1</strong><span>CI/CD pipelines, set up from scratch for every service</span></li>
+          <li style="--i: 1"><strong>5+</strong><span>backend services and microservices containerised and deployed</span></li>
+          <li style="--i: 2"><strong>6+</strong><span>Lambda functions for event-driven and scheduled work</span></li>
+          <li style="--i: 3"><strong>3</strong><span>languages in production: Python, TypeScript, Go</span></li>
+        </ul>
+
+        <div class="prose">
+          <p>Parallel is a hiring platform that matches job seekers with hiring teams. I joined in May 2023 as a full stack engineer on a remote team spread across US, Canadian and European time zones, and became the person who owns the infrastructure. Client work, so no screenshots. This is what I can say.</p>
+
+          <h2 id="the-platform">The platform</h2>
+          <p>Every piece of AWS the product runs on is Terraform: the ECS services, the EC2 instances, the S3 buckets, the load balancer in front, the IAM roles between them. A change to the infrastructure is a reviewed merge request, not a click in the console.</p>
+          <p>When I arrived there was no pipeline. I set up GitLab CI/CD from scratch so that every service gets the same treatment on every push: run the tests, build the Docker image, deploy it. Operational tasks that used to be done by hand (deployments, maintenance, clean-up) became Bash scripts that anyone on the team can run.</p>
+
+          <figure class="figure">
+            <div class="diagram" role="img" aria-label="A push to GitLab runs CI, which tests the code, builds a Docker image and deploys it to ECS behind an application load balancer, or to Lambda; the services talk to PostgreSQL with pgvector, S3 and Redis; everything on AWS is managed with Terraform">
+              <svg viewBox="0 0 720 250" width="720" height="250">
+                <defs><marker id="arrow-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z"/></marker></defs>
+                <rect class="box" x="16" y="78" width="96" height="44"/><text x="64" y="104" text-anchor="middle">git push</text>
+                <text class="small" x="64" y="140" text-anchor="middle">Bash for the rest</text>
+                <rect class="box box--accent" x="152" y="56" width="170" height="88"/>
+                <text x="237" y="84" text-anchor="middle">GitLab CI/CD</text>
+                <text class="small" x="237" y="104" text-anchor="middle">test · build · deploy</text>
+                <text class="small" x="237" y="124" text-anchor="middle">Docker image</text>
+                <rect class="box" x="372" y="18" width="110" height="38"/><text x="427" y="42" text-anchor="middle">ALB</text>
+                <rect class="box" x="372" y="78" width="110" height="44"/><text x="427" y="97" text-anchor="middle">ECS</text><text class="small" x="427" y="113" text-anchor="middle">5+ services</text>
+                <rect class="box" x="372" y="140" width="110" height="44"/><text x="427" y="159" text-anchor="middle">Lambda</text><text class="small" x="427" y="175" text-anchor="middle">6+ functions</text>
+                <rect class="box" x="540" y="60" width="160" height="40"/><text x="620" y="85" text-anchor="middle">PostgreSQL · pgvector</text>
+                <rect class="box" x="540" y="118" width="160" height="40"/><text x="620" y="143" text-anchor="middle">S3 · Redis</text>
+                <path class="edge" d="M112 100 H150" marker-end="url(#arrow-p)"/>
+                <path class="edge" d="M322 100 H370" marker-end="url(#arrow-p)"/>
+                <path class="edge" d="M322 118 C350 118 346 162 370 162" marker-end="url(#arrow-p)"/>
+                <path class="edge edge--fast" d="M427 56 V76" marker-end="url(#arrow-p)"/>
+                <path class="edge" d="M482 100 L538 84" marker-end="url(#arrow-p)"/>
+                <path class="edge" d="M482 162 L538 140" marker-end="url(#arrow-p)"/>
+                <rect class="box" x="372" y="206" width="328" height="30" style="stroke-dasharray: 6 4"/>
+                <text class="small" x="536" y="226" text-anchor="middle">everything on this side is Terraform</text>
+              </svg>
+            </div>
+            <figcaption>A push on the left, the running platform on the right, one pipeline in between.</figcaption>
+          </figure>
+
+          <h2 id="serverless">The serverless part</h2>
+          <p>Not everything deserves a long-running container. The event-driven and scheduled workloads (reacting to uploads and queue messages, nightly jobs) run as Lambda functions, six and counting, deployed through the same pipeline and defined in the same Terraform.</p>
+
+          <h2 id="the-services">The services</h2>
+          <p>I designed, built and deployed five or more backend services and microservices, in whichever language fit: Python with FastAPI and Flask, Node.js in TypeScript, and Go. They expose REST APIs and WebSocket APIs for the real-time product features, and all of them ship in Docker to ECS.</p>
+          <p>Two of them are worth naming. A high-throughput web scraping and data ingestion service in Flask, and the recommendation services that give end users personalised results in production. On the front end I shipped user-facing features in Next.js and TypeScript, from the UI through to the API integration.</p>
+
+          <h2 id="the-data-layer">The data layer</h2>
+          <p>I own the PostgreSQL side. The work that matters most is unglamorous: reading query plans, tuning the slow ones, and eliminating N+1 patterns in the ORM code so endpoints stay fast as the data grows. Performance under production load is a thing you keep, not a thing you reach.</p>
+
+          <h2 id="rag-in-production">RAG in production</h2>
+          <p>The same infrastructure runs the LLM features. I built production RAG (retrieval-augmented generation) systems with LangChain against the OpenAI and Anthropic APIs, with vector search on pgvector where the data already lived in Postgres and on Pinecone where it did not. Because I also own the platform, the AI services get the same pipeline, the same containers and the same monitoring as everything else, instead of living in a notebook somewhere.</p>
+
+          <div class="note">The through-line of this job: I write the service, I write the pipeline that ships it, and I write the Terraform it runs on. When something breaks at 2am in another time zone, there is no handoff between "the app" and "the infra". It is one person's problem, and that person can fix it.</div>
+        </div>
+      </article>
+      <nav class="pager" aria-label="More work">
+        <span></span>
+        <span><a href="/projects/agentflow/">AgentFlow →</a></span>
+      </nav>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap wrap--wide">
+      <p>No framework, no build step. The only script is the palette picker. <a href="https://github.com/Arthurobo" target="_blank" rel="noopener">Read the source</a>.</p>
+      <details class="palette-picker">
+        <summary><span class="palette-chips" aria-hidden="true"><i data-hue="amber"></i><i data-hue="coral"></i><i data-hue="mint"></i><i data-hue="cyan"></i><i data-hue="violet"></i></span> Palette<span class="visually-hidden">: <span class="palette-current">Graphite</span></span></summary>
+        <div class="palette-menu">
+          <button class="palette-option" type="button" data-palette="graphite" aria-pressed="true"><span class="palette-chips" aria-hidden="true"><i data-hue="amber"></i><i data-hue="coral"></i><i data-hue="mint"></i><i data-hue="cyan"></i><i data-hue="violet"></i></span> Graphite</button>
+          <button class="palette-option" type="button" data-palette="midnight" aria-pressed="false"><span class="palette-chips" aria-hidden="true"><i data-hue="amber"></i><i data-hue="coral"></i><i data-hue="mint"></i><i data-hue="cyan"></i><i data-hue="violet"></i></span> Midnight</button>
+          <button class="palette-option" type="button" data-palette="terminal" aria-pressed="false"><span class="palette-chips" aria-hidden="true"><i data-hue="amber"></i><i data-hue="coral"></i><i data-hue="mint"></i><i data-hue="cyan"></i><i data-hue="violet"></i></span> Terminal</button>
+          <button class="palette-option" type="button" data-palette="ember" aria-pressed="false"><span class="palette-chips" aria-hidden="true"><i data-hue="amber"></i><i data-hue="coral"></i><i data-hue="mint"></i><i data-hue="cyan"></i><i data-hue="violet"></i></span> Ember</button>
+          <button class="palette-option" type="button" data-palette="daylight" aria-pressed="false"><span class="palette-chips" aria-hidden="true"><i data-hue="amber"></i><i data-hue="coral"></i><i data-hue="mint"></i><i data-hue="cyan"></i><i data-hue="violet"></i></span> Daylight</button>
+        </div>
+      </details>
+    </div>
+  </footer>
+  <script src="/assets/palette.js" defer></script>
+</body>
+</html>

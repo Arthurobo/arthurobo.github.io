@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pennywise · Arthur Obo-Nwakaji</title>
+  <meta name="description" content="Pennywise is a local-first, self-hosted expense tracker by Arthur Obo-Nwakaji: one Go binary, one SQLite file, installs itself as an OS service, with an optional Telegram bot and bring-your-own-key LLM.">
+  <link rel="canonical" href="https://arthurobo.github.io/projects/pennywise/">
+  <meta property="og:title" content="Pennywise · Arthur Obo-Nwakaji">
+  <meta property="og:description" content="Pennywise is a local-first, self-hosted expense tracker by Arthur Obo-Nwakaji: one Go binary, one SQLite file, installs itself as an OS service, with an optional Telegram bot and bring-your-own-key LLM.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://arthurobo.github.io/projects/pennywise/">
+  <meta property="og:site_name" content="Arthur Obo-Nwakaji">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <script>try{var p=localStorage.getItem("palette");if(p)document.documentElement.classList.add("p-"+p)}catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400..700&family=JetBrains+Mono:wght@400..800&display=swap">
+  <link rel="stylesheet" href="/assets/palettes.css">
+  <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body class="s-projects">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap wrap--wide">
+      <a class="mark" href="/" aria-label="Arthur Obo-Nwakaji, home"><span class="mark-glyph" aria-hidden="true">a</span></a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+        <li><a data-hue="amber" href="/work/">Work</a></li>
+        <li><a data-hue="coral" href="/projects/" aria-current="page">Projects</a></li>
+        <li><a data-hue="mint" href="/resume/">Resume</a></li>
+        <li><a data-hue="violet" href="/hire/">Hire</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <div class="wrap wrap--wide">
+      <a class="back" href="/projects/">← All projects</a>
+      <article class="page-grid">
+        <h1>Pennywise</h1>
+        <p class="lede">Local-first personal expense tracking. Your money, your machine: one Go binary, one SQLite file you can copy, and a Telegram bot if you want to text it "5000 fuel".</p>
+        <aside class="rail">
+          <dl class="facts">
+            <dt>what</dt><dd>Open source</dd>
+            <dt>when</dt><dd>May – June 2026</dd>
+            <dt>stack</dt><dd>Go, pure-Go SQLite, embedded templates and assets, Telegram Bot API, systemd / launchd / Task Scheduler</dd>
+            <dt>llm</dt><dd>Bring your own key: OpenAI, Anthropic, Google Gemini or xAI. Nothing is proxied</dd>
+            <dt>links</dt><dd><a href="https://github.com/Arthurobo/pennywise" target="_blank" rel="noopener">github.com/Arthurobo/pennywise</a></dd>
+          </dl>
+          <a class="button" href="https://github.com/Arthurobo/pennywise" target="_blank" rel="noopener">Read the source</a>
+          <p class="rail-title">Install</p>
+          <pre style="font-size: 0.72rem; padding: 0.7rem 0.8rem; margin: 0 0 1.5rem;"><code>go install github.com/Arthurobo/pennywise/cmd/pennywise@latest
+pennywise init
+pennywise start</code></pre>
+        </aside>
+
+        <ul class="stats">
+          <li style="--i: 0"><strong>1</strong><span>binary. No Postgres, no Redis, no Node</span></li>
+          <li style="--i: 1"><strong>1</strong><span>SQLite file, backed up and restored with two commands</span></li>
+          <li style="--i: 2"><strong>3</strong><span>service managers it installs itself into, none needing admin</span></li>
+          <li style="--i: 3"><strong>4</strong><span>LLM providers, with your own key</span></li>
+        </ul>
+
+        <div class="prose">
+          <p>Pennywise is a single-tenant, self-hosted expense tracker in the spirit of Plex, Jellyfin or Home Assistant: one install, one user, one SQLite file. It runs on a laptop, a home server, a Raspberry Pi or a NAS. No accounts on anyone else's server and no subscription.</p>
+
+          <h2 id="one-command-one-service">One command, one service</h2>
+          <p><code>pennywise start</code> does not just launch a server. It installs Pennywise as a real OS service so it starts at every reboot and restarts itself if it crashes: a launchd LaunchAgent on macOS, a systemd user unit on Linux, a Task Scheduler task on Windows. All user-scoped, so no sudo and no service-file editing. The same pattern later became the service layer in <a href="/projects/agentflow/">AgentFlow</a>.</p>
+
+          <h2 id="the-data">The data</h2>
+          <p>Everything lives in one SQLite file under your home directory. <code>pennywise backup</code> copies it, <code>pennywise restore</code> brings it to a new machine, and <code>sqlite3</code> opens it whenever you want to look. Pure-Go SQLite means there is no C toolchain in the build and the binary is genuinely one file.</p>
+
+          <h2 id="the-optional-ai">The optional AI</h2>
+          <p>Log expenses by texting a Telegram bot: "5000 fuel", "how much this month?", or a photo of a receipt. The model that reads them is yours: bring an API key for OpenAI, Anthropic, Google Gemini or xAI, and Pennywise calls that provider directly. It never proxies your traffic through anything I run, which is the only honest way to do "AI" in a local-first tool.</p>
+        </div>
+      </article>
+      <nav class="pager" aria-label="More projects">
+        <span><a href="/projects/saidic/">← Saidic</a></span>
+        <span><a href="/resume/">The resume →</a></span>
+      </nav>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap wrap--wide">
+      <p>No framework, no build step. The only script is the palette picker. <a href="https://github.com/Arthurobo" target="_blank" rel="noopener">Read the source</a>.</p>
+      <details class="palette-picker">
+        <summary><span class="palette-chips" aria-hidden="true"><i data-hue="amber"></i><i data-hue="coral"></i><i data-hue="mint"></i><i data-hue="cyan"></i><i data-hue="violet"></i></span> Palette<span class="visually-hidden">: <span class="palette-current">Graphite</span></span></summary>
+        <div class="palette-menu">
+          <button class="palette-option" type="button" data-palette="graphite" aria-pressed="true"><span class="palette-chips" aria-hidden="true"><i data-hue="amber"></i><i data-hue="coral"></i><i data-hue="mint"></i><i data-hue="cyan"></i><i data-hue="violet"></i></span> Graphite</button>
+          <button class="palette-option" type="button" data-palette="midnight" aria-pressed="false"><span class="palette-chips" aria-hidden="true"><i data-hue="amber"></i><i data-hue="coral"></i><i data-hue="mint"></i><i data-hue="cyan"></i><i data-hue="violet"></i></span> Midnight</button>
+          <button class="palette-option" type="button" data-palette="terminal" aria-pressed="false"><span class="palette-chips" aria-hidden="true"><i data-hue="amber"></i><i data-hue="coral"></i><i data-hue="mint"></i><i data-hue="cyan"></i><i data-hue="violet"></i></span> Terminal</button>
+          <button class="palette-option" type="button" data-palette="ember" aria-pressed="false"><span class="palette-chips" aria-hidden="true"><i data-hue="amber"></i><i data-hue="coral"></i><i data-hue="mint"></i><i data-hue="cyan"></i><i data-hue="violet"></i></span> Ember</button>
+          <button class="palette-option" type="button" data-palette="daylight" aria-pressed="false"><span class="palette-chips" aria-hidden="true"><i data-hue="amber"></i><i data-hue="coral"></i><i data-hue="mint"></i><i data-hue="cyan"></i><i data-hue="violet"></i></span> Daylight</button>
+        </div>
+      </details>
+    </div>
+  </footer>
+  <script src="/assets/palette.js" defer></script>
+</body>
+</html>

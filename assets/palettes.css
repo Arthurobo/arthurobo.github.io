@@ -1,0 +1,129 @@
+/*
+  palettes.css: every colour on the site, as one set of tokens per palette.
+
+  A palette is a class on <html> (p-<slug>), chosen in the footer and remembered
+  in localStorage by assets/palette.js. The same class on any element repaints
+  just that element.
+
+  The contract every palette keeps, so all of them stay readable:
+    ink on ground, ground-2 and sunken             at least 7:1
+    ink-2 and ink-3 on ground and ground-2         at least 4.5:1
+    every hue and brand on ground and ground-2     at least 4.5:1
+  Hues are used both ways round: as text on the ground, and as a fill with
+  ground-coloured text on top. That is why the dark palettes have light hues
+  and the light one has deep hues.
+
+  Hue names:  amber (work)   cyan (stack, writing)   coral (projects)
+              mint (resume)  violet (now, hire)      brand = the site's own
+*/
+
+/* Graphite (the default): neutral charcoal, cyan brand */
+:root,
+.p-graphite {
+  --ground: #121417;
+  --ground-2: #1a1d22;
+  --ground-3: #23272e;
+  --sunken: #0c0e11;
+  --ink: #e9ecef;
+  --ink-2: #aeb6bf;
+  --ink-3: #8a929c;
+  --line: #2f353d;
+  --amber: #f2c25e;
+  --cyan: #6fd3e8;
+  --coral: #ff9b85;
+  --mint: #6ee7b7;
+  --violet: #c4b5fd;
+  --brand: var(--cyan);
+  --shade: rgba(0, 0, 0, 0.45);
+  --dot: rgba(255, 255, 255, 0.05);
+  --accent: var(--brand);
+  color-scheme: dark;
+}
+
+/* Midnight: deep navy, amber brand */
+.p-midnight {
+  --ground: #0f172a;
+  --ground-2: #162038;
+  --ground-3: #1e2a47;
+  --sunken: #0a1020;
+  --ink: #e6ebf5;
+  --ink-2: #aab5cc;
+  --ink-3: #8794ad;
+  --line: #2b3752;
+  --amber: #f5c451;
+  --cyan: #7dd3fc;
+  --coral: #fda4a4;
+  --mint: #86efac;
+  --violet: #c4b5fd;
+  --brand: var(--amber);
+  --shade: rgba(0, 0, 0, 0.45);
+  --dot: rgba(255, 255, 255, 0.05);
+  --accent: var(--brand);
+  color-scheme: dark;
+}
+
+/* Terminal: green-black phosphor, mint brand */
+.p-terminal {
+  --ground: #0d1210;
+  --ground-2: #141b17;
+  --ground-3: #1c261f;
+  --sunken: #080c0a;
+  --ink: #e3eee6;
+  --ink-2: #a9bdaf;
+  --ink-3: #849a8a;
+  --line: #2a3a30;
+  --amber: #e8c468;
+  --cyan: #7fd1df;
+  --coral: #f5a08a;
+  --mint: #7ef0a8;
+  --violet: #c9b3f5;
+  --brand: var(--mint);
+  --shade: rgba(0, 0, 0, 0.45);
+  --dot: rgba(255, 255, 255, 0.05);
+  --accent: var(--brand);
+  color-scheme: dark;
+}
+
+/* Ember: warm charcoal, coral brand */
+.p-ember {
+  --ground: #16130f;
+  --ground-2: #1f1b16;
+  --ground-3: #2a241d;
+  --sunken: #100e0b;
+  --ink: #f0e9df;
+  --ink-2: #c0b4a4;
+  --ink-3: #9a8e7e;
+  --line: #3b332a;
+  --amber: #f0bf55;
+  --cyan: #86cbd8;
+  --coral: #ff9f7a;
+  --mint: #93d9a0;
+  --violet: #cdb2ef;
+  --brand: var(--coral);
+  --shade: rgba(0, 0, 0, 0.45);
+  --dot: rgba(255, 255, 255, 0.05);
+  --accent: var(--brand);
+  color-scheme: dark;
+}
+
+/* Daylight: the light one, deep hues */
+.p-daylight {
+  --ground: #f7f7f4;
+  --ground-2: #eeeeea;
+  --ground-3: #e2e2dc;
+  --sunken: #ebebe6;
+  --ink: #1b1d21;
+  --ink-2: #4a5059;
+  --ink-3: #626972;
+  --line: #cdd0ca;
+  --amber: #875600;
+  --cyan: #0b6b86;
+  --coral: #b2392a;
+  --mint: #1f7a4a;
+  --violet: #6a3fb0;
+  --brand: var(--cyan);
+  --shade: rgba(40, 45, 50, 0.25);
+  --dot: rgba(30, 35, 40, 0.09);
+  --accent: var(--brand);
+  color-scheme: light;
+}

@@ -1,0 +1,87 @@
+---
+out: projects/agentflow/index.html
+title: AgentFlow
+description: AgentFlow is a Go daemon by Arthur Obo-Nwakaji that runs Claude Code and OpenCode in real PTYs on your computer and lets you drive them from your phone, over a per-machine Cloudflare tunnel or your own Tailscale, with per-device pairing instead of passwords.
+section: projects
+nav: projects
+---
+    <div class="wrap wrap--wide">
+      <a class="back" href="/projects/">← All projects</a>
+      <article class="page-grid">
+        <h1>AgentFlow</h1>
+        <p class="lede">Start a coding-agent terminal from your phone, leave it running, come back to the same terminal later from any paired device. A Go daemon, a tunnel, and no passwords.</p>
+        <aside class="rail">
+          <dl class="facts">
+            <dt>what</dt><dd>Open source, MIT</dd>
+            <dt>when</dt><dd>September 2026 – now</dd>
+            <dt>stack</dt><dd>Go, Next.js / TypeScript, SQLite, Cloudflare Tunnel, Tailscale (tsnet), systemd, launchd, Task Scheduler, GitHub Actions, cosign</dd>
+            <dt>platforms</dt><dd>Linux and macOS (amd64, arm64), Windows (amd64)</dd>
+            <dt>links</dt><dd><a href="https://github.com/Arthurobo/agentflow">github.com/Arthurobo/agentflow</a><br><a href="https://github.com/Arthurobo/agentflow-cloud">agentflow-cloud</a></dd>
+          </dl>
+          <a class="button" href="https://github.com/Arthurobo/agentflow">Read the source</a>
+          <p class="rail-title">Install</p>
+          <pre style="font-size: 0.72rem; padding: 0.7rem 0.8rem; margin: 0 0 1.5rem;"><code>curl -fsSL https://raw.githubusercontent.com/arthurobo/agentflow/main/install.sh | sh</code></pre>
+        </aside>
+
+        <ul class="stats">
+          <li style="--i: 0"><strong>3</strong><span>operating systems, each with its own background service</span></li>
+          <li style="--i: 1"><strong>1</strong><span>binary, with the web UI embedded</span></li>
+          <li style="--i: 2"><strong>0</strong><span>passwords. Each device pairs once and gets its own revocable token</span></li>
+          <li style="--i: 3"><strong>2</strong><span>ways in: a Cloudflare tunnel, or your own Tailscale</span></li>
+        </ul>
+
+        <div class="prose">
+          <p>I run Claude Code all day. The thing I kept wanting was to check on a long task, or kick off a new one, from my phone while away from the desk, and to come back to the <em>same</em> terminal, not a new session. AgentFlow is that. It does not replace the agents: it runs the <code>claude</code> and <code>opencode</code> you already have, logged in as you, in real PTYs, and serves a web UI for talking to them.</p>
+
+          <h2 id="getting-in">Getting in</h2>
+          <p>Remote access is the whole point, and the part that has to be right. By default the account service gives each machine its own Cloudflare tunnel at a stable address like <code>https://quiet-harbor-4821.useagentflow.xyz</code>. Nothing to set up and no account needed: the daemon runs <code>cloudflared</code> itself, downloading a pinned, SHA-256-verified release if there is none on the path.</p>
+          <p>If you would rather nothing went through servers I run, <code>AF_REMOTE=tailscale</code> uses Tailscale instead. AgentFlow embeds its own Tailscale node with <code>tsnet</code>, so there is no install and no root, just a one-time browser sign-in. Or it can use the Tailscale already on the computer. Or <code>AF_REMOTE=off</code> keeps everything on localhost.</p>
+          <p>Whichever way in, only paired devices see anything. To anyone else the address shows the pairing page and nothing but 404s. A phone pairs once, with a one-time QR code or by tapping <strong>Request access</strong> and having the 4-digit code approved on the computer, and gets its own token that can be revoked on its own.</p>
+
+          <figure class="figure">
+            <div class="diagram" role="img" aria-label="A phone reaches the agentflow daemon through either a Cloudflare tunnel or Tailscale; the daemon runs claude and opencode in PTYs and serves the web UI; a small account service provisions the tunnel and emails the address but never sees tokens or terminal data">
+              <svg viewBox="0 0 720 240" width="720" height="240">
+                <defs><marker id="arrow-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z"/></marker></defs>
+                <rect class="box" x="16" y="88" width="96" height="48"/><text x="64" y="108" text-anchor="middle">phone</text><text class="small" x="64" y="126" text-anchor="middle">any browser</text>
+                <rect class="box" x="160" y="46" width="140" height="40"/><text x="230" y="71" text-anchor="middle">Cloudflare tunnel</text>
+                <rect class="box" x="160" y="138" width="140" height="40"/><text x="230" y="163" text-anchor="middle">Tailscale (tsnet)</text>
+                <text class="small" x="230" y="118" text-anchor="middle">one or the other</text>
+                <rect class="box box--accent" x="340" y="66" width="198" height="92"/>
+                <text x="439" y="92" text-anchor="middle">agentflow daemon</text>
+                <text class="small" x="439" y="112" text-anchor="middle">pairing · tokens · web UI</text>
+                <text class="small" x="439" y="130" text-anchor="middle">systemd · launchd · Task</text>
+                <text class="small" x="439" y="148" text-anchor="middle">SQLite</text>
+                <rect class="box" x="582" y="56" width="122" height="40"/><text x="643" y="81" text-anchor="middle">claude (PTY)</text>
+                <rect class="box" x="582" y="128" width="122" height="40"/><text x="643" y="153" text-anchor="middle">opencode (PTY)</text>
+                <rect class="box" x="160" y="200" width="140" height="30" style="stroke-dasharray: 6 4"/><text class="small" x="230" y="220" text-anchor="middle">account service</text>
+                <path class="edge" d="M112 104 C136 104 136 66 158 66" marker-end="url(#arrow-a)"/>
+                <path class="edge" d="M112 120 C136 120 136 158 158 158" marker-end="url(#arrow-a)"/>
+                <path class="edge edge--fast" d="M300 66 C322 66 322 100 338 100" marker-end="url(#arrow-a)"/>
+                <path class="edge edge--fast" d="M300 158 C322 158 322 124 338 124" marker-end="url(#arrow-a)"/>
+                <path class="edge" d="M538 100 C560 100 560 76 580 76" marker-end="url(#arrow-a)"/>
+                <path class="edge" d="M538 124 C560 124 560 148 580 148" marker-end="url(#arrow-a)"/>
+                <path class="edge" d="M300 215 C320 215 330 200 340 158" style="stroke-dasharray: 3 5"/>
+                <text class="small" x="330" y="228" text-anchor="start">provisions the tunnel, never sees a token</text>
+              </svg>
+            </div>
+            <figcaption>The phone never talks to the agents directly. The daemon owns the PTYs and decides who gets in.</figcaption>
+          </figure>
+
+          <h2 id="running-in-the-background">Running in the background</h2>
+          <p>A terminal you come back to has to outlive the browser tab, so the daemon is a real service: a systemd user unit on Linux, a launchd agent on macOS, a per-user Scheduled Task on Windows. None of them need admin. On Windows the terminals are ConPTY instead of a Unix PTY, and the build is the same Go binary. The CLI talks to the running daemon over an owner-only Unix socket, so <code>agentflow pair</code>, <code>approve</code>, <code>revoke</code> and <code>remote status</code> work the same whether the daemon is the service or a foreground <code>agentflow serve</code>.</p>
+
+          <h2 id="shipping-it">Shipping it</h2>
+          <p>End users need neither Go nor Node. <code>make build</code> exports the Next.js UI and embeds it in the binary; GitHub Actions builds release archives for every OS and CPU. The installer downloads the right one, verifies its SHA-256 against the release's <code>checksums.txt</code> and, when <code>cosign</code> is installed, the signature on that file. A failed signature aborts the install. <code>agentflow update</code> does the same dance for upgrades, and <code>agentflow uninstall --purge</code> lists what it will remove and asks first.</p>
+
+          <h2 id="the-account-service">The account service</h2>
+          <p><a href="https://github.com/Arthurobo/agentflow-cloud">agentflow-cloud</a> is deliberately small. One Go binary serves a JSON API, a dashboard in Go templates with vendored htmx (no JavaScript build step), and a health check. It signs people in with an emailed 6-digit code, emails them their machine's address when it changes, and provisions the Cloudflare named tunnels through Cloudflare's API, storing only a hash of the machine's provisioning secret. Codes and session tokens are hashed at rest; the schema is one migration with timestamps and an update trigger on every table, and a test checks that stays true. It never receives device tokens, pairing tokens or terminal data, so nothing stored there grants access to a machine.</p>
+
+          <h2 id="the-honest-part">The honest part</h2>
+          <p>A paired device can run any command as you. The agent terminals run with <code>claude --dangerously-skip-permissions</code> (OpenCode: <code>--auto</code>), because that is what makes them useful from a phone. The README says so in a warning box, <a href="https://github.com/Arthurobo/agentflow/blob/main/SECURITY.md">SECURITY.md</a> spells out the model, and the default Cloudflare transport is documented as one where Cloudflare terminates TLS and can see the traffic. Pair only devices you control.</p>
+        </div>
+      </article>
+      <nav class="pager" aria-label="More projects">
+        <span><a href="/work/parallel/">← Parallel</a></span>
+        <span><a href="/projects/saidic/">Saidic →</a></span>
+      </nav>
+    </div>

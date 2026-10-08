@@ -1,0 +1,92 @@
+---
+out: projects/saidic/index.html
+title: Saidic
+description: Saidic is an AI-first customer engagement platform by Arthur Obo-Nwakaji: an embeddable chat widget that answers from a business's own knowledge with RAG and carries out actions against its systems, on a FastAPI backend that replaced seven services with one.
+section: projects
+nav: projects
+---
+    <div class="wrap wrap--wide">
+      <a class="back" href="/projects/">← All projects</a>
+      <article class="page-grid">
+        <h1>Saidic</h1>
+        <p class="lede">A chat widget for a business's website that answers from the business's own information and can act on its systems, and the backend consolidation that turned seven services into one.</p>
+        <aside class="rail">
+          <dl class="facts">
+            <dt>what</dt><dd>My own product. Private while it is in development</dd>
+            <dt>when</dt><dd>2026, in development</dd>
+            <dt>backend</dt><dd>Python, FastAPI, SQLAlchemy (async), arq, PostgreSQL with pgvector, Redis, Nginx, Docker Compose</dd>
+            <dt>front ends</dt><dd>Next.js 15, React 19, TypeScript: a dashboard and an embeddable widget</dd>
+            <dt>ai</dt><dd>One LLM wrapper over OpenRouter, embeddings in pgvector, a decision model for routing and checks</dd>
+          </dl>
+          <p class="rail-title">Status</p>
+          <p class="muted" style="margin: 0 0 1.5rem;">The backend, its tests and the local stack exist and run. The cutover of the live database to the new backend and production deployment are later phases, and the docs say which parts are not yet verified.</p>
+        </aside>
+
+        <ul class="stats">
+          <li style="--i: 0"><strong>7 → 1</strong><span>services folded into one FastAPI backend</span></li>
+          <li style="--i: 1"><strong>3</strong><span>roles from one image: API, worker, crawler</span></li>
+          <li style="--i: 2"><strong>16</strong><span>modules, each with its own models, service and router</span></li>
+          <li style="--i: 3"><strong>2</strong><span>Next.js front ends: the dashboard and the widget</span></li>
+        </ul>
+
+        <div class="prose">
+          <p>Saidic gives a business a chat widget for its website. Visitors chat with an assistant that answers from the business's own information and can carry out actions against the business's systems: look up an order, cancel a subscription, check stock. Staff follow and join conversations from a dashboard. A research agent builds a public directory of companies, and campaigns send outreach e-mail to companies chosen from it.</p>
+
+          <h2 id="how-an-answer-is-made">How an answer is made</h2>
+          <p>Everything a business gives the assistant (its profile, questions and answers, About text, files, verified websites, documents pushed by its own programs through an API key) becomes sources, documents and passages. Passages are embedded into pgvector; directory search is Postgres full-text search. When a visitor asks something, the message is routed, the passages that answer it are retrieved and judged, a reply is generated, and the reply is checked against the passages it claims to rest on.</p>
+          <p>Every turn is recorded: what the assistant took the message to be, what it read, its checks, the time it took and what it cost. The dashboard's Trace page shows that record, and the questions that could not be answered are kept as a list, because those are the gaps in the knowledge the business should fill.</p>
+
+          <h2 id="actions">Actions</h2>
+          <p>An action is an API endpoint the business configures: a URL, a method, the parameters to collect from the visitor, and a credential. The assistant works out which parameters are missing, asks for them in plain language, validates them against the business's patterns, then calls the endpoint and explains the result.</p>
+          <p>Credentials are the dangerous part, so they are treated that way. Secrets are encrypted at rest with AES-256-GCM under a key from the environment, with key rotation; the API never returns a secret, only a fixed mask, and sending the mask back leaves the stored value unchanged. Token-based credentials (login exchange, OAuth client credentials, OAuth password grant) are refreshed by an hourly job before they expire, with simultaneous executions sharing one acquisition through a database lock, and a daily job checks each credential's health.</p>
+          <p>Every outbound call to a URL a business supplied goes through one gate: http and https only, no internal network address by literal or after name resolution, on every redirect hop, with a timeout and a response size limit. The connection is made to the address that was checked, so a DNS answer that changes between the check and the connection cannot redirect the call inward. The crawler's browser reaches the network through a local checking proxy for the same reason. Patterns a business writes are matched with a linear-time engine, never the backtracking one.</p>
+
+          <h2 id="realtime">Realtime</h2>
+          <p>Two WebSockets: the visitor's chat and the staff's live chat. Redis pub/sub fans messages out across API instances, and holds the short-lived state (rate limits, presence, buffered heartbeats). A socket's token travels as a subprotocol, never in the query string, because Nginx's error log prints a failing request's whole address and cannot be told otherwise. The access log uses a format with no query strings at all. Those two decisions came from reading what the logs would contain, not from a checklist.</p>
+
+          <h2 id="the-consolidation">The consolidation</h2>
+          <p>Saidic did not start this way. It was a Django REST backend with Celery and Celery beat, a Go service for WebSockets and tracking, a FastAPI "Logic Engine" for the chat agent with its own Celery, a Research Engine with its own API, two Redis instances, Elasticsearch, and an in-memory FAISS index. It worked, and it was seven things to deploy, monitor and keep in step.</p>
+
+          <figure class="figure">
+            <div class="diagram" role="img" aria-label="Before: Django with Celery, a Go WebSocket service, a FastAPI logic engine, a research engine, two Redis instances, Elasticsearch and FAISS. After: one FastAPI codebase run as API, worker and crawler, with PostgreSQL plus pgvector and one Redis, behind Nginx">
+              <svg viewBox="0 0 720 230" width="720" height="230">
+                <defs><marker id="arrow-s" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z"/></marker></defs>
+                <text class="small" x="150" y="22" text-anchor="middle">before</text>
+                <rect class="box" x="20" y="34" width="124" height="30"/><text x="82" y="54" text-anchor="middle">Django + Celery</text>
+                <rect class="box" x="156" y="34" width="124" height="30"/><text x="218" y="54" text-anchor="middle">Go WebSockets</text>
+                <rect class="box" x="20" y="74" width="124" height="30"/><text x="82" y="94" text-anchor="middle">Logic Engine</text>
+                <rect class="box" x="156" y="74" width="124" height="30"/><text x="218" y="94" text-anchor="middle">Research Engine</text>
+                <rect class="box" x="20" y="114" width="124" height="30"/><text x="82" y="134" text-anchor="middle">Redis × 2</text>
+                <rect class="box" x="156" y="114" width="124" height="30"/><text x="218" y="134" text-anchor="middle">Elasticsearch</text>
+                <rect class="box" x="88" y="154" width="124" height="30"/><text x="150" y="174" text-anchor="middle">FAISS</text>
+                <path class="edge" d="M292 110 H352" marker-end="url(#arrow-s)"/>
+                <text class="small" x="322" y="100" text-anchor="middle">same paths,</text>
+                <text class="small" x="322" y="132" text-anchor="middle">same shapes</text>
+                <text class="small" x="540" y="22" text-anchor="middle">after</text>
+                <rect class="box" x="380" y="34" width="110" height="30"/><text x="435" y="54" text-anchor="middle">Nginx</text>
+                <rect class="box box--accent" x="380" y="78" width="320" height="64"/>
+                <text x="540" y="100" text-anchor="middle">one FastAPI codebase</text>
+                <text class="small" x="540" y="120" text-anchor="middle">API · worker · crawler, one image</text>
+                <rect class="box" x="380" y="156" width="206" height="30"/><text x="483" y="176" text-anchor="middle">PostgreSQL + pgvector + FTS</text>
+                <rect class="box" x="596" y="156" width="104" height="30"/><text x="648" y="176" text-anchor="middle">Redis (arq)</text>
+                <rect class="box" x="500" y="34" width="200" height="30"/><text x="600" y="54" text-anchor="middle">Next.js: dashboard, widget</text>
+                <path class="edge edge--fast" d="M435 64 V76" marker-end="url(#arrow-s)"/>
+                <path class="edge" d="M483 142 V154" marker-end="url(#arrow-s)"/>
+                <path class="edge" d="M648 142 V154" marker-end="url(#arrow-s)"/>
+              </svg>
+            </div>
+            <figcaption>Seven moving parts on the left, three on the right, and the API contract unchanged between them.</figcaption>
+          </figure>
+
+          <p>The rule of the consolidation was that behaviour stays identical: the same paths, request and response shapes and status codes, so the two front ends did not have to change. A small compatibility layer reproduces Django REST Framework's field validation, error messages and page-number pagination down to the wording, and every deliberate difference is recorded with its reason. Elasticsearch and FAISS are gone: directory search is Postgres full-text search and similarity is pgvector.</p>
+          <p>Inside the backend, each module has a <code>models.py</code>, a <code>service.py</code> and a <code>router.py</code>, and the boundaries are enforced by a script that runs with the tests: a module imports another only through its service, agents contain no SQL, and the core and AI layers import nothing from above them. The whole thing runs as one image in three roles (API, general worker, crawler worker) behind Nginx, with Compose files for development and production.</p>
+
+          <h2 id="where-it-stands">Where it stands</h2>
+          <p>The backend, its tests and the local stack exist and run, and the demo can be put on Cloudflare quick tunnels to try from a phone. The cutover of the development database to the new backend has not been carried out, and production deployment is a later phase. The technical docs end with a section called "What is not verified", and I would rather the page said that than implied otherwise.</p>
+        </div>
+      </article>
+      <nav class="pager" aria-label="More projects">
+        <span><a href="/projects/agentflow/">← AgentFlow</a></span>
+        <span><a href="/projects/pennywise/">Pennywise →</a></span>
+      </nav>
+    </div>
