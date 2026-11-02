@@ -10,12 +10,12 @@ palette picker in the footer (`assets/palette.js`, about 40 lines).
 
 | Path | What |
 |---|---|
-| `/` | Home: who, selected work, what's next, projects, the stack |
+| `/` | Home: who, selected work (Saidic first), what's next, projects, the stack |
 | `/work/` | Jobs, side projects, and a table of capabilities with where each was proven |
-| `/work/parallel/` | Case study: the AWS platform, CI/CD and services at Parallel |
-| `/projects/` | AgentFlow, Saidic, Pennywise, Saidiz and the smaller repos |
+| `/work/parallel/` | Case study: the AWS platform, CI/CD and services at Parallel (May 2023 to Oct 2026) |
+| `/projects/` | Saidic, AgentFlow, Scout, Job Nomad, Pennywise, Saidiz and the smaller repos |
 | `/projects/agentflow/`, `/projects/saidic/`, `/projects/pennywise/` | Case studies |
-| `/resume/` | The web resume (printable) and the three tailored PDFs |
+| `/resume/` | The web resume (printable) and the four tailored PDFs |
 | `/hire/` | What's on offer: platform, backend, RAG, or a full-time role |
 
 ## Preview locally
@@ -62,8 +62,9 @@ running the generator so the canonical and og:url tags follow.
   `tools/pages/`, then run `python3 tools/build.py` to regenerate every page.
   Editing the generated `.html` files directly also works; just do not run the
   generator afterwards without porting the edit into `tools/pages/`.
-- **Resume PDFs:** drop new files over `resume/Arthurobo_*.pdf`; the buttons on
-  `/resume/` point at those names.
+- **Resume PDFs:** the four PDFs in `resume/` are built by the CV generator in
+  the `looking_for_a_job` repo; copy its `cv/pdf/{Backend,Fullstack,DevOps,AI_Engineer}.pdf`
+  over `resume/Arthurobo_<name>.pdf`. The buttons on `/resume/` point at those names.
 
 ## Design
 

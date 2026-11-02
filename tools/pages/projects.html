@@ -1,15 +1,31 @@
 ---
 out: projects/index.html
 title: Projects
-description: Open source and side projects by Arthur Obo-Nwakaji: AgentFlow, Saidic, Pennywise, Saidiz and the smaller repos.
+description: Projects by Arthur Obo-Nwakaji: Saidic, AgentFlow, Scout, Job Nomad, Pennywise, Saidiz and the smaller repos.
 section: projects
 nav: projects
 ---
     <div class="wrap wrap--wide">
       <h1>Projects</h1>
-      <p class="lede" style="max-width: 44rem;">Things I built on my own time. Most of them are in Go, and each one ships as something you can install and run, with the service file, the installer and the release pipeline that implies.</p>
+      <p class="lede" style="max-width: 44rem;">Things I built. Saidic is the product I founded and run; the rest are open source or demos, most of them in Go, each one something you can install and run.</p>
 
       <ul class="cards">
+        <li><a class="card" href="/projects/saidic/">
+          <span class="card-art" data-hue="coral" aria-hidden="true">
+            <svg viewBox="0 0 120 120" focusable="false">
+              <path class="art-stroke" d="M22 30 h70 a8 8 0 0 1 8 8 v40 a8 8 0 0 1 -8 8 H56 l-18 16 v-16 H22 a8 8 0 0 1 -8 -8 V38 a8 8 0 0 1 8 -8z"/>
+              <circle class="art-fill art-bob" cx="42" cy="58" r="5"/>
+              <circle class="art-fill art-bob" cx="57" cy="58" r="5"/>
+              <circle class="art-fill art-bob" cx="72" cy="58" r="5"/>
+              <path class="art-fill art-pop" d="M100 6 l-10 18 h8 l-4 16 12 -20 h-8z"/>
+            </svg>
+          </span>
+          <span class="card-body">
+            <span class="card-top"><span class="card-title">Saidic</span><span class="card-when"><span class="live">live</span> 2026–present</span></span>
+            <span class="card-text">An AI agent for customer support that only says what you have told it: answers from the business's own knowledge, actions against its APIs with the customer's consent, human takeover from a live dashboard. Founded, built and run by me.</span>
+            <span class="card-stack">FastAPI · PostgreSQL + pgvector · Redis + arq · WebSockets · Next.js · OpenRouter · Cloudflare</span>
+          </span>
+        </a></li>
         <li><a class="card" href="/projects/agentflow/">
           <span class="card-art" data-hue="amber" aria-hidden="true">
             <svg viewBox="0 0 120 120" focusable="false">
@@ -28,22 +44,39 @@ nav: projects
             <span class="card-stack">Go · Next.js · SQLite · systemd / launchd / Task Scheduler · GitHub Actions · cosign</span>
           </span>
         </a></li>
-        <li><a class="card" href="/projects/saidic/">
-          <span class="card-art" data-hue="coral" aria-hidden="true">
+        <li id="scout"><a class="card" href="https://github.com/Arthurobo/scout-agent">
+          <span class="card-art" data-hue="violet" aria-hidden="true">
             <svg viewBox="0 0 120 120" focusable="false">
-              <path class="art-stroke" d="M22 30 h70 a8 8 0 0 1 8 8 v40 a8 8 0 0 1 -8 8 H56 l-18 16 v-16 H22 a8 8 0 0 1 -8 -8 V38 a8 8 0 0 1 8 -8z"/>
-              <circle class="art-fill art-bob" cx="42" cy="58" r="5"/>
-              <circle class="art-fill art-bob" cx="57" cy="58" r="5"/>
-              <circle class="art-fill art-bob" cx="72" cy="58" r="5"/>
-              <path class="art-fill art-pop" d="M100 6 l-10 18 h8 l-4 16 12 -20 h-8z"/>
+              <rect class="art-stroke" x="16" y="28" width="88" height="64" rx="8"/>
+              <path class="art-stroke art-thin art-soft" d="M16 44 H104"/>
+              <circle class="art-fill art-soft" cx="26" cy="36" r="2.5"/><circle class="art-fill art-soft" cx="34" cy="36" r="2.5"/>
+              <path class="art-stroke art-thin art-soft" d="M28 58 H76 M28 70 H64"/>
+              <path class="art-stroke art-draw" d="M78 72 l8 8 14 -16"/>
             </svg>
           </span>
           <span class="card-body">
-            <span class="card-top"><span class="card-title">Saidic</span><span class="card-when"><span class="wip">in development</span> 2026</span></span>
-            <span class="card-text">An AI-first customer engagement platform. A chat widget that answers from the business's own knowledge and carries out actions against its systems, a dashboard for the team, and a backend that replaced seven services with one.</span>
-            <span class="card-stack">FastAPI · SQLAlchemy · PostgreSQL + pgvector · Redis · Nginx · Next.js · WebSockets</span>
+            <span class="card-top"><span class="card-title">Scout</span><span class="card-when"><span class="wip">demo</span> 2026</span></span>
+            <span class="card-text">A Slack hiring agent built on Trigger.dev as a demo for its founder. The approval step is a tool with no execute function, so the run suspends at no cost until a human says yes. Approver allowlist, draft hash, an atomic send claim and a unique index so nobody is contacted twice, all enforced in Postgres and code, not the prompt. Development environment only.</span>
+            <span class="card-stack">TypeScript · Trigger.dev · Postgres · Slack</span>
           </span>
         </a></li>
+        <li id="jobnomad"><span class="card">
+          <span class="card-art" data-hue="cyan" aria-hidden="true">
+            <svg viewBox="0 0 120 120" focusable="false">
+              <circle class="art-stroke" cx="52" cy="52" r="26"/>
+              <path class="art-stroke" d="M71 71 L98 98"/>
+              <path class="art-stroke art-thin art-soft" d="M40 48 H64 M40 58 H58"/>
+              <rect class="art-fill art-bar" x="16" y="92" width="8" height="14" rx="2"/>
+              <rect class="art-fill art-bar" x="30" y="84" width="8" height="22" rx="2"/>
+              <rect class="art-fill art-bar" x="44" y="96" width="8" height="10" rx="2"/>
+            </svg>
+          </span>
+          <span class="card-body">
+            <span class="card-top"><span class="card-title">Job Nomad</span><span class="card-when">2026</span></span>
+            <span class="card-text">Hybrid job search: typo-tolerant full-text, embeddings in pgvector, reciprocal rank fusion and a cross-encoder rerank, with a ranking-quality gate in CI so a change cannot quietly make results worse. A Go API with an internal Python AI service and a versioned agent protocol over WebSocket; the rerank model runs locally on CPU with ONNX Runtime, quantised, after measuring which model fit the latency budget.</span>
+            <span class="card-stack">Go (chi, sqlc) · Python · pgvector · ONNX Runtime · WebSocket</span>
+          </span>
+        </span></li>
         <li><a class="card" href="/projects/pennywise/">
           <span class="card-art" data-hue="mint" aria-hidden="true">
             <svg viewBox="0 0 120 120" focusable="false">
